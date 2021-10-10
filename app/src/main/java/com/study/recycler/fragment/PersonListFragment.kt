@@ -30,8 +30,8 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
         return binding.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 
@@ -39,7 +39,7 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
         super.onViewCreated(view, savedInstanceState)
         initList()
         binding.addFab.setOnClickListener { addPerson() }
-        updatePersonList()
+        observeViewModelState()
     }
 
     private fun initList() {
@@ -57,16 +57,16 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
 
     private fun deletePerson(position: Int) {
         personListViewModel.deletePerson(position)
-        updatePersonList()
     }
 
     private fun addPerson() {
         personListViewModel.addPerson()
-        updatePersonList()
         binding.userList.scrollToPosition(0)
     }
 
-    private fun updatePersonList() {
-        personAdapter.items = personListViewModel.getPersonList()
+    private fun observeViewModelState() {
+        personListViewModel.personLiveData.observe(viewLifecycleOwner) { newPersons ->
+            personAdapter.items = newPersons
+        }
     }
 }
