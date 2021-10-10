@@ -6,17 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.recycler.R
 import com.study.recycler.adapter.PersonAdapter
-import com.study.recycler.data.Person
 import com.study.recycler.databinding.FragmentUserListBinding
 import com.study.recycler.util.AutoClearedValue
 import com.study.recycler.viewModel.PersonListViewModel
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator
-import java.util.*
 
 class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     private var _binding: FragmentUserListBinding? = null
