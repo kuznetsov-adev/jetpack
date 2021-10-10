@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.recycler.R
@@ -12,14 +14,15 @@ import com.study.recycler.adapter.PersonAdapter
 import com.study.recycler.data.Person
 import com.study.recycler.databinding.FragmentUserListBinding
 import com.study.recycler.util.AutoClearedValue
+import com.study.recycler.viewModel.PersonListViewModel
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator
 import java.util.*
 
 class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     private var _binding: FragmentUserListBinding? = null
     private val binding get() = _binding!!
-
     private var personAdapter: PersonAdapter by AutoClearedValue(this)
+    private val personListViewModel: PersonListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +42,7 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
         super.onViewCreated(view, savedInstanceState)
         initList()
         binding.addFab.setOnClickListener { addPerson() }
-        personAdapter.items = persons
+        updatePersonList()
     }
 
     private fun initList() {
@@ -56,13 +59,17 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     }
 
     private fun deletePerson(position: Int) {
-
-        personAdapter.items = persons
+        personListViewModel.deletePerson(position)
+        updatePersonList()
     }
 
     private fun addPerson() {
-
-        personAdapter.items = persons
+        personListViewModel.addPerson()
+        updatePersonList()
         binding.userList.scrollToPosition(0)
+    }
+
+    private fun updatePersonList() {
+        personAdapter.items = personListViewModel.getPersonList()
     }
 }
