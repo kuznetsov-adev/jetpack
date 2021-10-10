@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -68,5 +69,9 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
         personListViewModel.persons.observe(viewLifecycleOwner) { newPersons ->
             personAdapter.items = newPersons
         }
+        personListViewModel.showToast
+            .observe(viewLifecycleOwner) {
+                Toast.makeText(requireContext(), "Person was added", Toast.LENGTH_SHORT).show()
+            }
     }
 }
