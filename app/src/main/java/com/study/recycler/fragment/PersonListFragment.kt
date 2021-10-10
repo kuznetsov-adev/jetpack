@@ -13,20 +13,13 @@ import com.study.recycler.adapter.PersonAdapter
 import com.study.recycler.databinding.FragmentUserListBinding
 import com.study.recycler.util.AutoClearedValue
 import com.study.recycler.viewModel.PersonListViewModel
-import com.study.recycler.viewModel.ViewModelFactory
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator
 
 class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     private var _binding: FragmentUserListBinding? = null
     private val binding get() = _binding!!
     private var personAdapter: PersonAdapter by AutoClearedValue(this)
-
-//    private val personListViewModel: PersonListViewModel by viewModels()
-    private val id: String
-        get() = requireArguments().getString("id").toString()
-    private val personListViewModel: PersonListViewModel by viewModels(
-        factoryProducer = { ViewModelFactory(id)}
-    )
+    private val personListViewModel: PersonListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +30,8 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 

@@ -5,7 +5,7 @@ import com.study.recycler.data.Person
 import com.study.recycler.repository.PersonRepository
 import java.util.*
 
-class PersonListViewModel(someId: String) : ViewModel() {
+class PersonListViewModel : ViewModel() {
     private val repository = PersonRepository()
     private var persons = repository.getPersons()
 
