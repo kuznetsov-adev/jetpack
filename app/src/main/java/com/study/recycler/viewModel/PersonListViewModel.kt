@@ -1,5 +1,6 @@
 package com.study.recycler.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.study.recycler.data.Person
@@ -8,7 +9,9 @@ import java.util.*
 
 class PersonListViewModel : ViewModel() {
     private val repository = PersonRepository()
-    val personLiveData = MutableLiveData<List<Person>>(repository.getPersons())
+    private val personLiveData = MutableLiveData<List<Person>>(repository.getPersons())
+    val persons: LiveData<List<Person>>
+        get() = personLiveData
 
     fun addPerson() {
         val newUser = repository.createPerson()

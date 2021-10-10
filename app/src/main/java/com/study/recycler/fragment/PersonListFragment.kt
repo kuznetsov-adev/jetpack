@@ -65,7 +65,7 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     }
 
     private fun observeViewModelState() {
-        personListViewModel.personLiveData.observe(viewLifecycleOwner) { newPersons ->
+        personListViewModel.persons.observe(viewLifecycleOwner) { newPersons ->
             personAdapter.items = newPersons
         }
     }
