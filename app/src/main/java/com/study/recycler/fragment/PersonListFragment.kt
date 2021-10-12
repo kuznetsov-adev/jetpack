@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.study.recycler.R
@@ -44,7 +45,9 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     }
 
     private fun initList() {
-        personAdapter = PersonAdapter { position -> deletePerson(position) }
+        personAdapter = PersonAdapter {
+            findNavController().navigate(R.id.action_personListFragment_to_detailsFragment)
+        }
         with(binding.userList) {
             adapter = personAdapter
             layoutManager = LinearLayoutManager(requireContext())

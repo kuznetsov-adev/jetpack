@@ -9,5 +9,13 @@
         android:id="@+id/personListFragment"
         android:name="com.study.recycler.fragment.PersonListFragment"
         tools:layout="@layout/fragment_user_list"
-        android:label="PersonListFragment" />
+        android:label="PersonListFragment" >
+        <action
+            android:id="@+id/action_personListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.study.recycler.fragment.DetailsFragment"
+        android:label="DetailsFragment" />
 </navigation>
