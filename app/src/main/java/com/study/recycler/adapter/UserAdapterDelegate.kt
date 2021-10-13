@@ -8,7 +8,7 @@ import com.study.recycler.extensions.inflate
 import com.study.recycler.holder.UserHolder
 
 class UserAdapterDelegate(
-    private val onItemClicked: (position: Int) -> Unit
+    private val onItemClicked: (id: String) -> Unit
 ) : AbsListItemAdapterDelegate<Person.User, Person, UserHolder>(){
 
     override fun isForViewType(item: Person, items: MutableList<Person>, position: Int): Boolean {

@@ -5,10 +5,10 @@ import com.study.recycler.data.Person
 
 class UserHolder(
     override val containerView: View,
-    onItemClicked: (position: Int) -> Unit
+    onItemClicked: (id: String) -> Unit
 ) : BasePersonHolder(containerView, onItemClicked) {
 
     fun bind(person: Person.User) {
-        bindMainInfo(person.name, person.avatarLink, person.age)
+        bindMainInfo(person.id, person.name, person.avatarLink, person.age)
     }
 }

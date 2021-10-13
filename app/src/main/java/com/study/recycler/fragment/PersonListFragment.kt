@@ -45,7 +45,7 @@ class PersonListFragment : Fragment(R.layout.fragment_user_list) {
     }
 
     private fun initList() {
-        personAdapter = PersonAdapter {
+        personAdapter = PersonAdapter { id ->
             findNavController().navigate(R.id.action_personListFragment_to_detailsFragment)
         }
         with(binding.userList) {

@@ -6,11 +6,11 @@ import kotlinx.android.synthetic.main.item_developer.*
 
 class DeveloperHolder(
     override val containerView: View,
-    onItemClicked: (position: Int) -> Unit
+    onItemClicked: (id: String) -> Unit
 ) : BasePersonHolder(containerView, onItemClicked) {
 
     fun bind(person: Person.Developer) {
-        bindMainInfo(person.name, person.avatarLink, person.age)
+        bindMainInfo(person.id, person.name, person.avatarLink, person.age)
         programmingLanguageTextView.text = person.programmingLanguage
     }
 }

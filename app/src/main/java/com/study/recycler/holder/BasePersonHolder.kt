@@ -9,20 +9,23 @@ import kotlinx.android.synthetic.main.item_developer.*
 
 abstract class BasePersonHolder(
     view: View,
-    onItemClicked: (position: Int) -> Unit
+    onItemClicked: (id: String) -> Unit
 ) : RecyclerView.ViewHolder(view), LayoutContainer {
+    private var currentId: String? = null
 
     init {
         view.setOnClickListener {
-            onItemClicked(bindingAdapterPosition)
+            currentId?.let{onItemClicked(it)}
         }
     }
 
     protected fun bindMainInfo(
+        id: String,
         name: String,
         avatarLink: String,
         age: Int
     ) {
+        currentId = id
         nameTextView.text = name
         ageTextView.text = "Age = ${age}"
 

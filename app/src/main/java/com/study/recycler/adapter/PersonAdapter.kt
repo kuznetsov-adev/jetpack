@@ -5,7 +5,7 @@ import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.study.recycler.data.Person
 
 class PersonAdapter(
-    onItemClicked: (position: Int) -> Unit
+    onItemClicked: (id: String) -> Unit
 ) : AsyncListDifferDelegationAdapter<Person>(PersonDiffUtilCallback()) {
 
     init {
