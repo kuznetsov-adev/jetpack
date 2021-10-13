@@ -17,5 +17,9 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.study.recycler.fragment.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment" >
+        <argument
+            android:name="personId"
+            app:argType="string" />
+    </fragment>
 </navigation>
